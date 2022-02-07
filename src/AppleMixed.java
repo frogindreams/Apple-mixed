@@ -1,5 +1,4 @@
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.Arrays;
 
 class AppleMixed {
     public static void mixing(int[] a, int[] l, int[] r, int left, int right) {
@@ -44,12 +43,12 @@ class AppleMixed {
         mixing(a, l, r, mid, n - mid);
     }
 
-    @Test
-    public void positiveTest() {
+    public static void main(String[] args) {
         int[] actual = { 1, 5, 3, 2, 7, 1 };
         int[] expected = { 1, 1, 2, 3, 5, 7 };
 
         AppleMixed.MixUp(actual, actual.length);
-        Assert.assertArrayEquals(expected, actual);
+        
+        System.out.println(Arrays.toString(actual));
     }
 }
