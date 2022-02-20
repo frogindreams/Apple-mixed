@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.io.Reader;
 import java.io.FileReader;
 
+import general.MergeSort;
+
 public class MutualFiles {
     private ArrayList<String> mutual = new ArrayList<>();
 
-    private void WriteIntoArray(String... files) {
+    private void RecordIntoArray(String... files) {
         for (String file : files) {
             try (FileReader current = new FileReader("files/" + file)) {
                 StringBuffer sb = new StringBuffer();
@@ -33,10 +35,15 @@ public class MutualFiles {
     }
 
     public MutualFiles(String... files) {
-        WriteIntoArray(files);
+        RecordIntoArray(files);
     }
 
     public void ShowUp() {
         System.out.println(mutual);
+    }
+
+    public void AppleMix() throws Exception {
+        MergeSort result = new MergeSort(mutual);
+        result.sort();
     }
 }
