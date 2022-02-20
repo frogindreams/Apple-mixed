@@ -1,31 +1,39 @@
 package general;
 
+import java.util.ArrayList;
 import java.io.Reader;
 import java.io.FileReader;
 
 public class MutualFiles {
-    private char[] mutual = new char[100];
+    private ArrayList<String> mutual = new ArrayList<>();
 
-    public MutualFiles(String... files) {
-        try {
-            for (String file : files) {
-                Reader currentFile = new FileReader("files/" + file);
+    private void WriteIntoArray(String... files) {
+        for (String file : files) {
+            try (FileReader current = new FileReader("files/" + file)) {
+                StringBuffer sb = new StringBuffer();
+                while (current.ready()) {
+                    char c = (char) current.read();
+                    if (c == '\n') {
+                        mutual.add(sb.toString());
+                        sb = new StringBuffer();
+                    } else {
+                        sb.append(c);
+                    }
+                }
 
-                System.out.println("File's state: " + currentFile.ready());
-                if ( currentFile.ready() ) {
-                    currentFile.read(mutual);
-                    currentFile.close();
-                } else {
-                    /*
-                     * here's I need to come up something
-                     */
+                if (sb.length() > 0) {
+                    mutual.add(sb.toString());
                 }
             }
-        }
 
-        catch (Exception e) {
-            System.out.println( "Here we go => " + e.getStackTrace() );
+            catch (Exception e) {
+                System.out.println( "Here we go => " + e.getStackTrace() );
+            }
         }
+    }
+
+    public MutualFiles(String... files) {
+        WriteIntoArray(files);
     }
 
     public void ShowUp() {
