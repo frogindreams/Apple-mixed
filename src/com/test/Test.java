@@ -6,6 +6,7 @@ import java.util.ArrayList;
 class Test {
     public static void main(String[] args) throws Exception {
         MutualFiles obj = new MutualFiles(args);
+        obj.AppleMix();
         obj.ShowUp();
         obj.BlowUp();
     }

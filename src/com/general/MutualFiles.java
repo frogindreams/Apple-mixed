@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import general.MergeSort;
 
 public class MutualFiles {
-    private ArrayList<String> mutual = new ArrayList<>();
+    public ArrayList<String> mutual = new ArrayList<>();
     private String nameForOutput;
 
     private ArrayList<String> getArrayOfFiles(String[] quarrels) {
@@ -79,7 +79,6 @@ public class MutualFiles {
     }
 
     public void AppleMix() throws Exception {
-        MergeSort result = new MergeSort(mutual);
-        result.sort();
+        sort(mutual, mutual.size());
     }
 }
