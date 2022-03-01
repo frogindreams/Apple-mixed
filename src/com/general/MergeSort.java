@@ -3,11 +3,29 @@ package general;
 import java.util.ArrayList;
 
 public class MergeSort {
-    public static void defaultMerge(ArrayList<String> result,
-                                    ArrayList<String> left,
-                                    ArrayList<String> right,
-                                    int left, int right) {
-        System.out.println("it's working");
+    public static void defaultMerge(ArrayList<String> result, 
+                                    ArrayList<String> left, 
+                                    ArrayList<String> right, 
+                                    int lSize, int rSize) {
+        int lArrow = 0, rArrow = 0, mArrow = 0;
+        while (lArrow < lSize && rArrow < rSize) {
+            int lBlock = Integer.parseInt(left.get(lArrow));
+            int rBlock = Integer.parseInt(right.get(rArrow));
+
+            if ( lBlock <= rBlock ) {
+                result.set( ++mArrow, left.get(++lArrow) ); 
+            } else {
+                result.set( ++mArrow, right.get(++rArrow) ); 
+            }
+        }
+
+        while (lArrow < lSize) {
+            result.set( ++mArrow, left.get(++lArrow) ); 
+        }
+
+        while (rArrow < rSize) {
+            result.set( ++mArrow, right.get(++rArrow) ); 
+        }
     }
 
     public static void basementOfMerge(ArrayList<String> result, int lengthOfArray) {
@@ -33,7 +51,7 @@ public class MergeSort {
             }
         }
 
-        catch (Exception e) { System.out.println( "Here we go (basementOfMerge) => " + e.getStackTrace() ) }
+        catch (Exception e) { System.out.println( "Here we go (basementOfMerge) => " + e.getStackTrace() ); }
     }
 
     MergeSort(ArrayList<String> result, int lengthOfArray) {
