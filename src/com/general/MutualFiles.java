@@ -11,6 +11,7 @@ import general.MergeSort;
 public class MutualFiles {
     public ArrayList<String> mutual = new ArrayList<>();
     private String nameForOutput;
+    public boolean isRMode = false;
 
     private ArrayList<String> getArrayOfFiles(String[] quarrels) {
         ArrayList<String> files = new ArrayList<>();
@@ -21,6 +22,8 @@ public class MutualFiles {
                 ++isFirst;
                 if (isFirst > 1) { files.add(quarrels[iter]); }
                 else { nameForOutput = quarrels[iter]; }
+            } else {
+                if (quarrels[iter] == "-r") { isRMode = true; }
             }
         }
 
@@ -78,7 +81,7 @@ public class MutualFiles {
         }
     }
 
-    public void AppleMix() throws Exception {
-        MergeSort obj = new MergeSort(mutual, mutual.size());
+    public void AppleMix() {
+        MergeSort obj = new MergeSort(mutual, mutual.size(), isRMode);
     }
 }
