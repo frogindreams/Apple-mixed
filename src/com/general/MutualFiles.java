@@ -79,6 +79,6 @@ public class MutualFiles {
     }
 
     public void AppleMix() throws Exception {
-        // it's nothing
+        MergeSort obj = new MergeSort(mutual, mutual.size());
     }
 }
