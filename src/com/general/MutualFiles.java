@@ -65,7 +65,7 @@ public class MutualFiles {
 
     public void ShowUp() {
         if (obj == null) { System.out.println(mutual); }
-        else { System.out.println(obj.result); }
+        else { System.out.println( "obj.result => " + obj.result); }
     }
 
     public void BlowUp() {
