@@ -12,6 +12,8 @@ public class MutualFiles {
     public ArrayList<String> mutual = new ArrayList<>();
     private String nameForOutput;
     public boolean isRMode = false;
+    MergeSort obj;
+
 
     private ArrayList<String> getArrayOfFiles(String[] quarrels) {
         ArrayList<String> files = new ArrayList<>();
@@ -62,7 +64,8 @@ public class MutualFiles {
     }
 
     public void ShowUp() {
-        System.out.println(mutual);
+        if (obj == null) { System.out.println(mutual); }
+        else { System.out.println(obj.result); }
     }
 
     public void BlowUp() {
@@ -82,6 +85,6 @@ public class MutualFiles {
     }
 
     public void AppleMix() {
-        MergeSort obj = new MergeSort(mutual, mutual.size(), isRMode);
+        obj = new MergeSort(mutual, mutual.size(), isRMode);        
     }
 }
