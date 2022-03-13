@@ -25,7 +25,7 @@ public class MutualFiles {
                 if (isFirst > 1) { files.add(quarrels[iter]); }
                 else { nameForOutput = quarrels[iter]; }
             } else {
-                if (quarrels[iter] == "-r") { isRMode = true; }
+                if (quarrels[iter].equals("-r")) { isRMode = true; }
             }
         }
 
@@ -71,9 +71,16 @@ public class MutualFiles {
     public void BlowUp() {
         try {
             Writer output = new FileWriter("files/" + nameForOutput);
-            for (int iter = 0; iter < mutual.size(); ++iter) { 
-                output.write(mutual.get(iter));
-                output.write("\n");
+            if (obj == null) {
+                for (int iter = 0; iter < mutual.size(); ++iter) { 
+                    output.write(mutual.get(iter));
+                    output.write("\n");
+                }
+            } else {
+                for (int iter = 0; iter < (obj.result).size(); ++iter) { 
+                    output.write((obj.result).get(iter));
+                    output.write("\n");
+                }
             }
 
             output.close();

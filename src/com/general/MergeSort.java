@@ -6,26 +6,26 @@ public class MergeSort {
     private static boolean isRMode;
     public ArrayList<String> result = new ArrayList<>();
 
-    public void merge(ArrayList<String> m, ArrayList<String> l, ArrayList<String> r, int left, int right) {
+    public void merge(ArrayList<String> main, ArrayList<String> lSide, ArrayList<String> rSide, int left, int right) {
         try {
             int iLeft = 0, iRight = 0, iMain = 0;
             while ((iLeft < left) && (iRight < right)) {
-                int leftPart = Integer.parseInt(l.get(iLeft));
-                int rightPart = Integer.parseInt(r.get(iRight));
+                int leftPart = Integer.parseInt(lSide.get(iLeft));
+                int rightPart = Integer.parseInt(rSide.get(iRight));
 
                 if ( leftPart <= rightPart ) {
-                    m.set( iMain++, l.get(iLeft++) );
+                    main.set( iMain++, lSide.get(iLeft++) );
                 } else {
-                    m.set( iMain++, r.get(iRight++) );
+                    main.set( iMain++, rSide.get(iRight++) );
                 }
             }
 
             while (iLeft < left) {
-                m.set( iMain++, l.get(iLeft++) );
+                main.set( iMain++, lSide.get(iLeft++) );
             }
 
             while (iRight < right) {
-                m.set( iMain++, r.get(iRight++) );
+                main.set( iMain++, rSide.get(iRight++) );
             }
         }
 
@@ -55,7 +55,16 @@ public class MergeSort {
     }
 
     public void reverseMerge(ArrayList<String> result, int length) {
-        System.out.println("rev");
+        defaultMerge(result, length);
+        ArrayList<String> copyOfResult = (ArrayList<String>)result.clone();
+
+        for (int iter = (length - 1); iter >= 0; iter--) {
+            copyOfResult.set( (length - 1) - iter, result.get(iter) );
+        }
+
+        for (int iter = 0; iter < length; ++iter) { 
+            result.set( iter, copyOfResult.get(iter) );
+        }
     }
 
     public void basementOfMerge(ArrayList<String> result, int lengthOfArray) {
